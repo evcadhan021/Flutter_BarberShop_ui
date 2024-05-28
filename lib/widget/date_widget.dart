@@ -60,14 +60,14 @@ class _DateWidgetState extends State<DateWidget> {
                     fontFamily: 'Nunito',
                     fontSize: 17.0,
                     fontWeight: FontWeight.bold,
-                    color: switchColor()),
+                    color: switchContentColor()),
               ),
               Text(
                 widget.day,
                 style: TextStyle(
                     fontFamily: 'FiraSans',
                     fontSize: 15.0,
-                    color: switchColor()),
+                    color: switchContentColor()),
               ),
             ],
           ),

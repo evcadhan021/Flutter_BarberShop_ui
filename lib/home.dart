@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_barbershop_ui/widget/barberman_widget.dart';
+import 'package:flutter_barbershop_ui/widget/date_widget.dart';
+import 'package:flutter_barbershop_ui/widget/service_widget.dart';
+import 'package:flutter_barbershop_ui/widget/time_widget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,6 +19,30 @@ class _HomeState extends State<Home> {
   void _selectedDate(int date) {
     setState(() {
       selectedDate = date;
+    });
+  }
+
+  List serviceSelected = <String>[];
+  void handleSelectedServices(String name) {
+    if (serviceSelected.contains(name)) {
+      serviceSelected.remove(name);
+    } else {
+      serviceSelected.add(name);
+    }
+    setState(() {});
+  }
+
+  var selectedBarber = 'zaki bermain';
+  _selectedBarber(name) {
+    setState(() {
+      selectedBarber = name;
+    });
+  }
+
+  var selectedTime = '12.30';
+  void _selectedTime(time) {
+    setState(() {
+      selectedTime = time;
     });
   }
 
@@ -57,10 +86,211 @@ class _HomeState extends State<Home> {
                   height: 60.0,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
+                    children: [
+                      DateWidget(
+                        date: 18,
+                        day: 'Tue',
+                        tapHandler: _selectedDate,
+                        isSelected: selectedDate == 18,
+                      ),
+                      const SizedBox(width: 25.0),
+                      DateWidget(
+                        date: 19,
+                        day: 'Wed',
+                        tapHandler: _selectedDate,
+                        isSelected: selectedDate == 19,
+                      ),
+                      const SizedBox(width: 25.0),
+                      DateWidget(
+                        date: 20,
+                        day: 'Thu',
+                        tapHandler: _selectedDate,
+                        isSelected: selectedDate == 20,
+                      ),
+                      const SizedBox(width: 25.0),
+                      DateWidget(
+                        date: 21,
+                        day: 'Fri',
+                        tapHandler: _selectedDate,
+                        isSelected: selectedDate == 21,
+                      ),
+                      const SizedBox(width: 25.0),
+                      DateWidget(
+                        date: 22,
+                        day: 'Sat',
+                        tapHandler: _selectedDate,
+                        isSelected: selectedDate == 22,
+                      ),
+                      const SizedBox(width: 25.0),
+                      DateWidget(
+                        date: 23,
+                        day: 'Sun',
+                        tapHandler: _selectedDate,
+                        isSelected: selectedDate == 23,
+                      ),
+                      const SizedBox(width: 25.0),
+                    ],
                   ),
                 ),
               )
             ],
+          ),
+          const SizedBox(height: 35.0),
+          Center(
+            child: Text(
+              'BARBERKING',
+              style: TextStyle(
+                  letterSpacing: 2.0,
+                  fontFamily: 'Nunito',
+                  fontSize: 30.0,
+                  color: Colors.black.withOpacity(0.6),
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 15.0),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: [
+              const SizedBox(width: 15.0),
+              ServiceWidget(
+                name: 'Haircut',
+                price: '40.00',
+                topHandler: handleSelectedServices,
+                isSelected: serviceSelected.contains('Haircut'),
+              ),
+              const SizedBox(width: 15.0),
+              ServiceWidget(
+                name: 'CreamBath',
+                price: '30.00',
+                topHandler: handleSelectedServices,
+                isSelected: serviceSelected.contains('CreamBath'),
+              ),
+              const SizedBox(width: 15.0),
+              ServiceWidget(
+                name: 'Perming',
+                price: '15.00',
+                topHandler: handleSelectedServices,
+                isSelected: serviceSelected.contains('Perming'),
+              ),
+              const SizedBox(width: 15.0),
+              ServiceWidget(
+                name: 'Protein',
+                price: '15.00',
+                topHandler: handleSelectedServices,
+                isSelected: serviceSelected.contains('Protein'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 15.0),
+          SizedBox(
+            height: 180.0,
+            child: ListView(
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+              scrollDirection: Axis.horizontal,
+              children: [
+                BarbermanWidget(
+                    imgPath: 'assets/b1.jpg',
+                    name: 'Emily Johnson',
+                    tapHandler: _selectedBarber,
+                    isSelected: selectedBarber == 'Emily Johnson'),
+                const SizedBox(width: 15.0),
+                BarbermanWidget(
+                    imgPath: 'assets/b2.jpg',
+                    name: 'Sophia Anderson',
+                    tapHandler: _selectedBarber,
+                    isSelected: selectedBarber == 'Sophia Anderson'),
+                const SizedBox(width: 15.0),
+                BarbermanWidget(
+                    imgPath: 'assets/b3.jpg',
+                    name: 'Olivia Smith',
+                    tapHandler: _selectedBarber,
+                    isSelected: selectedBarber == 'Olivia Smith'),
+                const SizedBox(width: 15.0),
+                BarbermanWidget(
+                    imgPath: 'assets/b4.jpg',
+                    name: 'Isabella Brown',
+                    tapHandler: _selectedBarber,
+                    isSelected: selectedBarber == 'Isabella Brown'),
+                const SizedBox(width: 15.0),
+              ],
+            ),
+          ),
+          const SizedBox(height: 15.0),
+          SizedBox(
+            height: 50.0,
+            child: Wrap(
+              spacing: 2,
+              alignment: WrapAlignment.center,
+              runSpacing: 10,
+              children: [
+                const SizedBox(width: 15.0),
+                TimeWidget(
+                    time: '11.00',
+                    tapHandler: _selectedTime,
+                    isSelected: selectedTime == '11.00'),
+                const SizedBox(width: 25.0),
+                TimeWidget(
+                    time: '13.00',
+                    tapHandler: _selectedTime,
+                    isSelected: selectedTime == '13.00'),
+                const SizedBox(width: 25.0),
+                TimeWidget(
+                    time: '15.00',
+                    tapHandler: _selectedTime,
+                    isSelected: selectedTime == '15.00'),
+                const SizedBox(width: 25.0),
+                TimeWidget(
+                    time: '17.00',
+                    tapHandler: _selectedTime,
+                    isSelected: selectedTime == '17.00'),
+                const SizedBox(width: 25.0),
+                TimeWidget(
+                    time: '19.00',
+                    tapHandler: _selectedTime,
+                    isSelected: selectedTime == '19.00'),
+                const SizedBox(width: 25.0),
+                TimeWidget(
+                    time: '21.00',
+                    tapHandler: _selectedTime,
+                    isSelected: selectedTime == '21.00'),
+                const SizedBox(width: 25.0),
+              ],
+            ),
+          ),
+          const SizedBox(height: 80),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                height: 50.0,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7.0),
+                    color: Colors.black),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        FontAwesomeIcons.whatsapp,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 10.0),
+                      Text(
+                        'BOOK VIA WHATSAPP',
+                        style: TextStyle(
+                            letterSpacing: 2.0,
+                            fontFamily: 'Firsans',
+                            fontSize: 17.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),

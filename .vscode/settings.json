@@ -1,0 +1,11 @@
+{
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "editor.letterSpacing": 0,
+    "errorLens.errorGutterIconColor": "#e45454",
+    "errorLens.warningGutterIconColor": "#e49bff",
+    "editor.suggest.preview": false,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "markdown.preview.lineHeight": 1.6
+}
